@@ -42,4 +42,9 @@ class Customer extends Model
     {
         return $this->hasMany(CustomerAddress::class, 'customer_id', 'customer_id');
     }
+
+    public function getFullNameAttribute()
+    {
+        return $this->FName . ' ' . $this->LName;
+    }
 }
