@@ -21,21 +21,6 @@ class MainController extends Controller
             ->get();
 
         $categories = Category::withCount('products')->get();
-
-        if (Auth::check()) {
-            $cart = Cart::where('customer_id', Auth::user()->customers->customer_id)
-                ->with(['cartItem' => function ($query) {
-                    $query->take(3); // Membatasi 3 item
-                    $query->with(['variationSize.photo.variation.product']); // Eager loading relasi
-                }])
-                ->first();
-
-            $cartCount = Cart::firstOrCreate([
-                'customer_id' => Auth::user()->customers->customer_id
-            ]);
-
-            return view('dashboard', compact('products', 'categories', 'cart', 'cartCount'));
-        }
         
         return view('dashboard', compact('products', 'categories'));
     }
