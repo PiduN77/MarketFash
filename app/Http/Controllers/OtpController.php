@@ -10,12 +10,12 @@ use Carbon\Carbon;
 
 class OTPController extends Controller
 {
-    public function showVerifyForm()
+    public function index()
     {
         return view('auth.verify');
     }
 
-    public function verify(Request $request, OTPService $otpService)
+    public function store(Request $request, OTPService $otpService)
     {
         $request->validate([
             'otp.*' => 'required|integer|min:0|max:9',

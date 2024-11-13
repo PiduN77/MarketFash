@@ -13,7 +13,7 @@
                                 </p>
                             </div>
                             <div class="card-body">
-                                    <form method="POST" action="{{ route('otp.verifyUser') }}">
+                                    <form method="POST" action="{{ route('otp.store') }}">
                                     @csrf
                                     <div class="mb-3">
                                         <div class="row otp-inputs">

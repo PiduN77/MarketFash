@@ -89,6 +89,6 @@ class RegisterController extends Controller
         $otpService = new OTPService();
         $otpService->generateOTP($user);
         $request->session()->flash('email', $request->input('email'));
-        return redirect()->route('otp.verify');
+        return redirect()->route('otp.index');
     }
 }
