@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OtpController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Category;
 use App\Models\Product;
@@ -21,13 +23,11 @@ Route::get('/', function () {
     return view('dashboard', compact('products', 'categories'));
 })->name('index');
 
-Route::controller(MainController::class)->group(function () {
-    Route::get('/product/{id}',  'show')->name('product.show');
-});
-
+Route::resource('product', ProductController::class);
 Route::resource('otp', OtpController::class);
 Route::resource('profile', ProfileController::class);
 Route::resource('address', AddressController::class);
+Route::resource('cart', CartController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

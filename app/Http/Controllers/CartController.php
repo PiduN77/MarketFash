@@ -2,27 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
-use App\Models\Category;
-use App\Models\Customer;
 use Illuminate\Http\Request;
-use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
 
-class MainController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = Product::with(['variations.photos.sizes'])
-            ->where('status', 'Publish')
-            ->get();
-
-        $categories = Category::withCount('products')->get();
-        
-        return view('dashboard', compact('products', 'categories'));
+        //
     }
 
     /**
@@ -44,10 +33,9 @@ class MainController extends Controller
     /**
      * Display the specified resource.
      */
-
-    public function show($id)
+    public function show(string $id)
     {
-        
+        //
     }
 
     /**
